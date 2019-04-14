@@ -140,7 +140,8 @@ def SiamRPN_init(im, target_pos, target_sz, net):
     z_crop = get_subwindow_tracking(im, target_pos, p.exemplar_size, s_z, avg_chans)
 
     z = Variable(z_crop.unsqueeze(0))
-    net.temple(z.cuda())
+    #net.temple(z.cuda())
+    net.temple(z.cpu())
 
     if p.windowing == 'cosine':
         window = np.outer(np.hanning(p.score_size), np.hanning(p.score_size))
