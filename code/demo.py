@@ -16,7 +16,8 @@ from utils import get_axis_aligned_bbox, cxy_wh_2_rect
 # load net
 net = SiamRPNvot()
 net.load_state_dict(torch.load(join(realpath(dirname(__file__)), 'SiamRPNVOT.model')))
-net.eval().cuda()
+net.cpu()
+#net.eval().cuda()
 
 # image and init box
 image_files = sorted(glob.glob('./bag/*.jpg'))
